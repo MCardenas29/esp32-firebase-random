@@ -71,6 +71,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For questions or issues, please open an issue on the project's repository or contact [your_email@example.com](mailto:your_email@example.com).
+For questions or issues, please open an issue on the project's repository or contact [mcardenas@ucol.mx](mailto:mcardenas@ucol.mx).
 
 Happy coding!
