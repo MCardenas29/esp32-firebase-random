@@ -11,12 +11,11 @@ WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP);
 
 void setup() {
-  randomSeed(76442352);
   Serial.begin(115200);
   WiFi.mode(WIFI_STA);
   WiFi.begin(SSID, PASSWORD);
   while(WiFi.status() != WL_CONNECTED){
-    Serial.print(".");
+    Serial.println(".");
     delay(100);
   }
   Serial.println("\nConnected to the WiFi network");
@@ -26,13 +25,15 @@ void setup() {
   timeClient.begin();
   timeClient.setTimeOffset(GMT_OFFSET * -6);
   timeClient.setUpdateInterval(1);
+
+  randomSeed(timeClient.getEpochTime());
 }
 
 void loop() {
   timeClient.update();
-  String currentTime = timeClient.getFormattedTime();
+  long currentTime = timeClient.getEpochTime();
   double num = random(0, 1000) / 100.0;
   Serial.println(num);
-  fb.setFloat("flujo/" + currentTime, num);
+  fb.setFloat("flujo/" + String(currentTime), num);
   delay(1000);
 }
